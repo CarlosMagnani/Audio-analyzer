@@ -1,5 +1,5 @@
 ## Prerequisite
-SentimentAnalyzerWithRealtimeVoice Requires
+Audio Analyzer Requires
 ```
 Modules :
 1)speech_recognition- For Realtime Speech Recognizer
