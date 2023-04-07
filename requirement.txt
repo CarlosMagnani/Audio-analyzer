@@ -1,0 +1,5 @@
+tkinter
+threading
+speech_recognition
+textblob
+pyttsx3
