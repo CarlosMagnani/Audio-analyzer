@@ -31,7 +31,7 @@ class Application(tk.Frame):
         mic = sr.Microphone()
         with mic as source:
             r.adjust_for_ambient_noise(source)
-            r.pause_threshold = 0.6
+            r.pause_threshold = 0.20
             audio = r.listen(source)
 
         self.status_label.config(text="Analisando...")
