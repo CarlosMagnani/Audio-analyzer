@@ -21,7 +21,7 @@ class Application(tk.Frame):
         self.record_button = tk.Button(self)
         self.record_button["text"] = "Gravar"
         self.record_button["command"] = self.record_audio
-        self.record_button.pack(side="top")
+        self.record_button.pack(side="bottom")
 
         self.status_label = tk.Label(self, text="Clique no botão para começar a gravar.")
         self.status_label.pack(side="bottom")
@@ -32,9 +32,8 @@ class Application(tk.Frame):
     def record_thread(self):
         self.status_label.config(text="Escutando...")
         r = sr.Recognizer()
-        mic = sr.Microphone(sample_rate=44100)
+        mic = sr.Microphone()
         with mic as source:
-            
             r.adjust_for_ambient_noise(source)
             r.pause_threshold = 1.0
             r.energy_threshold = 4000
@@ -42,8 +41,8 @@ class Application(tk.Frame):
 
         self.status_label.config(text="Analisando...")
         try:
-            audioClean = nr.reduce_noise(audio_clip=audio, noise_clip=audio, verbose=False)
-            query = r.recognize_google(audioClean, language="en-in")
+            # audioClean = nr.reduce_noise(audio_clip=audio, noise_clip=audio, verbose=False)
+            query = r.recognize_google(audio, language="en-in")
 
         except:
             self.status_label.config(text="Não foi possível reconhecer o áudio.")
