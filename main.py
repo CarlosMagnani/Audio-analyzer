@@ -12,6 +12,9 @@ class Application(tk.Frame):
         self.master = master
         self.master.title("Gravador")
         self.pack()
+
+        self.master.geometry("400x150")  # Tamanho da janela
+        self.master.eval('tk::PlaceWindow %s center' % self.master.winfo_toplevel())
         self.create_widgets()
 
     def create_widgets(self):
