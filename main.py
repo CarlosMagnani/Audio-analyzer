@@ -1,6 +1,7 @@
 import tkinter as tk
 import threading
 import speech_recognition as sr
+import noisereduce as nr
 from textblob import TextBlob as blob
 import pyttsx3
 
@@ -28,15 +29,19 @@ class Application(tk.Frame):
     def record_thread(self):
         self.status_label.config(text="Escutando...")
         r = sr.Recognizer()
-        mic = sr.Microphone()
+        mic = sr.Microphone(sample_rate=44100)
         with mic as source:
+            
             r.adjust_for_ambient_noise(source)
-            r.pause_threshold = 0.20
+            r.pause_threshold = 1.0
+            r.energy_threshold = 4000
             audio = r.listen(source)
 
         self.status_label.config(text="Analisando...")
         try:
-            query = r.recognize_google(audio, language="en-in")
+            audioClean = nr.reduce_noise(audio_clip=audio, noise_clip=audio, verbose=False)
+            query = r.recognize_google(audioClean, language="en-in")
+
         except:
             self.status_label.config(text="Não foi possível reconhecer o áudio.")
             return
