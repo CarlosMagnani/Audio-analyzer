@@ -3,3 +3,4 @@ threading
 speech_recognition
 textblob
 pyttsx3
+noisereduce
