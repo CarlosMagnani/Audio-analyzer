@@ -36,14 +36,14 @@ find your Python version First
 python --version
 ```
 find the appropriate .whl file from here,
-https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio
+https://pypi.org/project/PyAudio/#files
 
-For Example(mine 64 bit 3.7.4 python ):
+For Example(mine 64 bit 3.9.13 python ):
 The Download
 ```
-PyAudio‑0.2.11‑cp37‑cp37m‑win_amd64.whl file
+PyAudio‑0.2.13‑cp39‑cp39‑win_amd64.whl file
 ```
 Go to that directory where you have saved that file and running
 ```
-pip install PyAudio-0.2.11-cp37-cp37m-win_amd64.whl
+pip install PyAudio-0.2.13-cp39-cp39-win_amd64.whl
 ```
